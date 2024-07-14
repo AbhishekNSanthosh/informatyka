@@ -16,8 +16,8 @@ export default function FooterView() {
   return (
     <section id="contact" className="p-[1rem] dark:bg-black-100">
       <footer className="custom-footer flex flex-col items-center justify-center bg-breakerDay-600 dark:bg-black-100 px-[1vw]  rounded-[10px]">
-        <div className="relative mx-auto w-full py-16 sm:px-6 lg:px-8 lg:pt-18">
-          <div className="absolute right-[2vw] dark:bg-breakerDay-600 bg-white p-4 cursor-pointer rounded-full" onClick={scrollToTop}>
+        <div className="relative mx-auto w-full py-8 lg:py-16 sm:px-6 lg:px-8 lg:pt-18">
+          <div className="absolute right-[2vw] dark:bg-breakerDay-600 bg-white p-2 lg:p-4 md:p-4 cursor-pointer rounded-full" onClick={scrollToTop}>
             <IconScrollToTop />
           </div>
           <div className="lg:flex lg:items-end lg:justify-between ">
@@ -25,13 +25,14 @@ export default function FooterView() {
               <div className="flex justify-start ml-4 lg:ml-0 md:ml-0 text-white lg:justify-start">
                 <Image
                   src={"/csks.png"}
-                  width={250}
-                  height={250}
+                  width={400}
+                  height={400}
                   alt="csks logo"
+                  className="w-[10rem] h-[5rem] md:h-[6rem] lg:h-[6rem] lg:w-[15rem] md:w-[15rem]"
                 />
               </div>
 
-              <p className="mx-auto mt-6 max-w-md text-center dark:text-gray-400 leading-relaxed text-white lg:text-white lg:text-left">
+              <p className="mx-auto mt-6 max-w-md text-center dark:text-gray-400 leading-relaxed text-white lg:text-white text-sm lg:text-base md:text-base lg:text-left">
                 IEEE Computer Society (CS) drives progress in Computer Science
                 and Engineering by fostering collaboration among professionals
                 worldwide. Through conferences, publications, and diverse

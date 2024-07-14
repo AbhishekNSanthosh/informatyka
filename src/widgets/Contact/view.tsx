@@ -48,48 +48,50 @@ const contact = [
 ];
 export default function ContactView() {
   return (
-      <div className="px-4 py-20 mx-auto lg:px-[5vw] sm:py-16 lg:py-1">
-        <div className="flex flex-col items-center py-10">
-     <TitleBar title="Contact"/>
-        </div>
-        <div className="flex flex-wrap justify-center py-1">
-          {contact?.map((item) => (
-            <div
-              className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow m-4"
-              key={item?.id}
-            >
-              <div className="flex flex-col items-center py-10">
-                <Image
-                  className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                  src={item?.img}
-                  width={400}
-                  height={400}
-                  alt="Bonnie image"
-                />
-                <h5 className="mb-1 text-xl font-medium text-black-300">
-                  {item?.name}
-                </h5>
-                <span className="text-sm text-black-300">{item?.role}</span>
-                <div className="flex mt-4 md:mt-6">
-                  <a
-                    href={`mailto:${item?.mail}`}
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-breakerDay-600 rounded-lg hover:bg-slk-light focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    <IconMail className="size-6 mr-2" />
-                    E-Mail
-                  </a>
-                  <a
-                    href={`tel:${item?.contact}`}
-                    className="inline-flex items-center py-2 px-4 ms-2 text-sm font-medium text-black-300 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-                  >
-                    <IconChat className="mr-2 w-6 h-6" />
-                    Message
-                  </a>
-                </div>
+    <div className="mx-auto px-[5vw] sm:py-16 lg:py-1 dark:bg-black-100">
+      <div className="flex flex-col items-center py-4 sm:py-10 lg:py-5">
+        <TitleBar title="Contact" />
+      </div>
+      <div className="flex flex-wrap justify-center">
+        {contact?.map((item) => (
+          <div
+            className="w-full dark:bg-black-100 max-w-sm bg-white border border-gray-200 rounded-lg shadow m-4"
+            key={item?.id}
+          >
+            <div className="flex flex-col items-center py-10 px-2">
+              <Image
+                className="w-24 h-24 mb-3 rounded-full shadow-lg"
+                src={item?.img}
+                width={400}
+                height={400}
+                alt="Bonnie image"
+              />
+              <h5 className="mb-1 text-xl font-medium text-black-300 dark:text-gray-400">
+                {item?.name}
+              </h5>
+              <span className="text-sm text-black-300 dark:text-gray-500">
+                {item?.role}
+              </span>
+              <div className="flex mt-4 md:mt-6">
+                <a
+                  href={`mailto:${item?.mail}`}
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-breakerDay-600 rounded-lg hover:bg-slk-light focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  <IconMail className="size-6 mr-2" />
+                  E-Mail
+                </a>
+                <a
+                  href={`tel:${item?.contact}`}
+                  className="inline-flex items-center py-2 px-4 ms-2 text-sm font-medium text-black-300 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                >
+                  <IconChat className="mr-2 w-6 h-6" />
+                  Message
+                </a>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </div>
   );
 }
