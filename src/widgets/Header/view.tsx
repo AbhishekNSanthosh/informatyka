@@ -1,10 +1,13 @@
 import Button from "@components/Button";
 import Logo from "@components/Logo";
 import LogoBlack from "@components/LogoBlack";
-import DarkModeToggle from "@components/Toggle";
 import { navLinks } from "@utils/constants";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
+const DarkModeToggle = dynamic(() => import("@components/Toggle"), {
+  ssr: false,
+});
 
 export default function HeaderView() {
   return (
@@ -29,7 +32,7 @@ export default function HeaderView() {
         ))}
       </div>
       <div className="flex-1 flex flex-row items-center justify-end gap-4">
-        <DarkModeToggle/>
+        <DarkModeToggle />
         <Button
           className="bg-breakerDay-500 px-4 py-2 rounded-[10px] outline-none border-none text-white"
           title="Join whatsapp channel"

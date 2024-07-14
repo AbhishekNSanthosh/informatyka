@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "@styles/scss/main.scss";
 import HeaderView from "@widgets/Header";
 import FooterView from "@widgets/Footer";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Informatyka",
@@ -17,9 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Toaster />
         <HeaderView />
         <div className="pt-[100px]">{children}</div>
-        <FooterView/>
+        <FooterView />
       </body>
     </html>
   );

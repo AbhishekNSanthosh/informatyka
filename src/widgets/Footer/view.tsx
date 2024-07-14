@@ -17,7 +17,7 @@ export default function FooterView() {
     <section id="contact" className="p-[1rem] dark:bg-black-100">
       <footer className="custom-footer flex flex-col items-center justify-center bg-breakerDay-600 dark:bg-black-100 px-[1vw]  rounded-[10px]">
         <div className="relative mx-auto w-full py-16 sm:px-6 lg:px-8 lg:pt-18">
-          <div className="absolute right-[2vw] bg-white p-4 cursor-pointer rounded-full">
+          <div className="absolute right-[2vw] dark:bg-breakerDay-600 bg-white p-4 cursor-pointer rounded-full" onClick={scrollToTop}>
             <IconScrollToTop />
           </div>
           <div className="lg:flex lg:items-end lg:justify-between">

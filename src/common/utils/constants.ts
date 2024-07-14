@@ -7,10 +7,10 @@ export const navLinks = [
         title:"about",
         url:"/about"
     },
-    {
-        title:"FAQs",
-        url:"/faq"
-    },
+    // {
+    //     title:"FAQs",
+    //     url:"/faq"
+    // },
     {
         title:"Events",
         url:"/events"
