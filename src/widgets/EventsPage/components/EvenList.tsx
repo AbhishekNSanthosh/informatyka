@@ -1,7 +1,8 @@
 import React from "react";
-import SkeletonLoader from "@components/Skeleton";
+
 import dynamic from "next/dynamic";
 import EventItem from "./EventItem";
+import Skeleton from "@components/Skeleton";
 interface EventListProps {
   eventList: any[];
   isLoading: boolean;
@@ -17,7 +18,7 @@ export default function EvenList(props: EventListProps) {
         {Array(6)
           .fill(0)
           .map((_, index) => (
-            <SkeletonLoader key={index} />
+            <Skeleton key={index} />
           ))}
       </div>
     );

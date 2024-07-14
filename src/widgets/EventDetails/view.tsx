@@ -60,7 +60,7 @@ export default function EventDetails() {
         const eventDocRef = doc(db, "events", eventId); // Reference to the event document
         try {
           const eventDocSnapshot = await getDoc(eventDocRef); // Fetch the document snapshot
-  
+
           if (eventDocSnapshot.exists()) {
             const eventData = {
               id: eventDocSnapshot.id,
@@ -68,9 +68,9 @@ export default function EventDetails() {
               date: formatDate(eventDocSnapshot.data().date), // Format date assuming it's in dd-mm-yyyy format
               time: formatTime(eventDocSnapshot.data().time), // Format time assuming it's in hh:mm format
             } as Event; // Cast the data to Event type
-  
+
             setEvent(eventData); // Set the event data in state
-  
+
             // Check if registration should be open
             const currentDate = new Date();
             const eventDateTime = new Date(
@@ -80,20 +80,17 @@ export default function EventDetails() {
               setIsRegistrationOpen(false); // Close registration if current date is greater than event date
             }
           } else {
-            console.log("Event not found");
           }
-        } catch (error) {
-          console.error("Error fetching event:", error);
-        }
+        } catch (error) {}
       }
     };
-  
+
     fetchEvent();
   }, [eventId]); // Dependency array to re-run effect when eventId changes
-   // Dependency array to re-run effect when eventId changes
+  // Dependency array to re-run effect when eventId changes
 
   return (
-    <div className="px-[5vw] py-[2rem] pb-16">
+    <div className="px-[5vw] py-[2rem] pb-16 dark:bg-black-100">
       <div className="flex flex-col gap-14">
         <TitleBar title="Event Details" />
         {event ? (
@@ -101,10 +98,9 @@ export default function EventDetails() {
             event={event}
             isRegistrationOpen={isRegistrationOpen}
           />
-        )
-        :
-        <SkeletonLoader/>
-        }
+        ) : (
+          <SkeletonLoader />
+        )}
       </div>
     </div>
   );

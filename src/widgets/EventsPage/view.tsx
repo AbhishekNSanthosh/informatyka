@@ -28,17 +28,14 @@ export default function EventsPageView() {
 
         setEvents(eventData);
         setIsLoading(false); // Set loading to false after data is fetched
-      } catch (error) {
-        console.error("Error fetching events: ", error);
-      }
+      } catch (error) {}
     };
 
     fetchEvents();
   }, []);
-  console.log(events)
 
   return (
-    <div className="px-[5vw] py-[2rem]">
+    <div className="px-[5vw] py-[2rem] dark:bg-black-100">
       <div className="flex flex-col gap-8">
         <TitleBar title="Events" />
         <EvenList eventList={events} isLoading={isLoading} />

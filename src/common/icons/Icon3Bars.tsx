@@ -1,12 +1,12 @@
 import React from "react";
-import { IconProps } from  "@lib/types";
+import { IconProps } from  "@libs/types";
 
 export default function Icon3Bars(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="#1FCBC4"
       {...props}
     >
       <path

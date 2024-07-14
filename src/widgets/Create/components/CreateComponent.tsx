@@ -88,10 +88,8 @@ export default function CreateEventComponent() {
     if (file) {
       const storageRef = ref(storage, `images/${file.name}`);
       uploadBytes(storageRef, file).then((snapshot) => {
-        console.log("Uploaded a blob or file!", snapshot);
         // Get download URL
         getDownloadURL(snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
           setIsUploaded(true);
           // Set the download URL to the imgUrl field in the state
           setData((prevData) => ({
@@ -105,12 +103,10 @@ export default function CreateEventComponent() {
     setIsLoading(false);
   };
 
-  console.log(data);
 
   const createEvent = async () => {
     try {
       const res = await addDoc(eventsCollectionRef, data);
-      console.log(res);
       toast.success(`Event created successfully! Document ID: ${res.id}`);
       // Clear form data
       setData({
@@ -133,17 +129,16 @@ export default function CreateEventComponent() {
       setPreviewUrl(null);
       setIsUploaded(false);
     } catch (error: any) {
-      console.error("Error creating event: ", error);
       toast.error(`Failed to create event. Error: ${error.message}`);
     }
   };
 
   return (
-    <div className="px-[5vw] py-[2rem]">
+    <div className="px-[5vw] py-[2rem] dark:bg-black-100">
       <div className="flex flex-col gap-8">
         <TitleBar title="Create Event" />
-        <div className="flex gap-4">
-          <div className="flex p-8 border gap-4 flex-col-reverse border-breakerDay-300 rounded-[8px] w-[30vw] h-full items-center justify-center">
+        <div className="flex gap-4 flex-col md:flex-row lg:flex-row">
+          <div className="flex p-8 border gap-4 flex-col-reverse border-breakerDay-300 rounded-[8px] w-full md:w-[30vw] lg:w-[30vw] h-full items-center justify-center">
             {!isUploaded && (
               <input
                 type="file"
@@ -177,7 +172,7 @@ export default function CreateEventComponent() {
               </div>
             )}
           </div>
-          <div className="flex w-full gap-4">
+          <div className="flex w-full gap-4 flex-col md:flex-row lg:flex-row">
             <div className="flex flex-col w-full gap-4">
               <div className="w-full">
                 <input
@@ -185,7 +180,7 @@ export default function CreateEventComponent() {
                   name="title"
                   value={data.title}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full dark:bg-black-100"
                   placeholder="Title"
                 />
               </div>
@@ -195,7 +190,7 @@ export default function CreateEventComponent() {
                   name="description"
                   value={data.description}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Description"
                 />
               </div>
@@ -205,7 +200,7 @@ export default function CreateEventComponent() {
                   name="message"
                   value={data.message}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Message"
                 />
               </div>
@@ -215,19 +210,19 @@ export default function CreateEventComponent() {
                   name="condition"
                   value={data.condition}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Condition"
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <span className="">Contact 1</span>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-col md:flex-row lg:flex-row">
                   <input
                     type="text"
                     name="contactName-0"
                     value={data.contact[0].name}
                     onChange={handleInputChange}
-                    className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                    className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                     placeholder="Contact (1) Name"
                   />
                   <input
@@ -235,20 +230,20 @@ export default function CreateEventComponent() {
                     name="contactNo-0"
                     value={data.contact[0].no}
                     onChange={handleInputChange}
-                    className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                    className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                     placeholder="Contact (1) No."
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="">Contact 2</span>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-col md:flex-row lg:flex-row">
                   <input
                     type="text"
                     name="contactName-1"
                     value={data.contact[1].name}
                     onChange={handleInputChange}
-                    className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                    className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                     placeholder="Contact (2) Name"
                   />
                   <input
@@ -256,7 +251,7 @@ export default function CreateEventComponent() {
                     name="contactNo-1"
                     value={data.contact[1].no}
                     onChange={handleInputChange}
-                    className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                    className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                     placeholder="Contact (2) No."
                   />
                 </div>
@@ -270,27 +265,29 @@ export default function CreateEventComponent() {
                   name="mode"
                   value={data.mode}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Mode"
                 />
               </div>
               <div className="w-full">
+              <span className="dark:text-gray-400">Date</span>
                 <input
                   type="date"
                   name="date"
                   value={data.date}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Date"
                 />
               </div>
               <div className="w-full">
+                <span className="dark:text-gray-400">Time</span>
                 <input
                   type="time"
                   name="time"
                   value={data.time}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Time"
                 />
               </div>
@@ -300,7 +297,7 @@ export default function CreateEventComponent() {
                   name="registrationLink"
                   value={data.registrationLink}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Registration Link"
                 />
                 <span className="text-sm">
@@ -313,7 +310,7 @@ export default function CreateEventComponent() {
                   name="guidlinesLink"
                   value={data.guidlinesLink}
                   onChange={handleInputChange}
-                  className="px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
+                  className="dark:bg-black-100 px-1 py-2 border rounded-[8px] border-breakerDay-600 outline-none w-full"
                   placeholder="Guidelines Link, if any"
                 />
                 <span className="text-sm">Guidlines link if any</span>
@@ -330,7 +327,7 @@ export default function CreateEventComponent() {
                 toast.error("Please upload an image");
               }
             }}
-            className="w-[62vw] py-3 rounded-[10px] items-center justify-center flex border-none  text-white bg-breakerDay-600"
+            className="md:w-[62vw] lg:w-[62vw] w-full py-3 rounded-[10px] items-center justify-center flex border-none  text-white bg-breakerDay-600"
           >
             Submit
           </button>

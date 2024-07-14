@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <Toaster />
         <HeaderView />
-        <div className="pt-[100px]">{children}</div>
+        <div className="pt-[70px] lg:pt-[100px] md:[100px]">{children}</div>
         <FooterView />
       </body>
     </html>

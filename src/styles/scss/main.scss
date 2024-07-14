@@ -17,11 +17,21 @@ body {
 
 .mainTitle {
   color: transparent;
-  -webkit-text-stroke: 2px #1FCBC4;
+  -webkit-text-stroke: 2px #1fcbc4;
   background: url("/back.png");
   background-clip: text;
   animation: back 20s linear infinite;
   line-height: 1em;
+}
+@media (max-width: 768px) {
+  .mainTitle {
+    color: transparent;
+    -webkit-text-stroke: 0.6px #1fcbc4;
+    background: url("/back.png");
+    background-clip: text;
+    animation: back 20s linear infinite;
+    line-height: 1em;
+  }
 }
 
 @keyframes back {
@@ -35,7 +45,19 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color:$theme-color;
+  background-color: $theme-color;
   border-radius: 5px;
 }
 
+/* custom-skeleton.css */
+
+/* Base color for Skeleton */
+.react-loading-skeleton {
+  background-color: #2d3748; /* Dark background color */
+  color: #cbd5e0; /* Light text color */
+}
+
+/* Highlight color for Skeleton */
+.react-loading-skeleton::before {
+  background: rgba(255, 255, 255, 0.1); /* Adjust opacity and color as needed */
+}

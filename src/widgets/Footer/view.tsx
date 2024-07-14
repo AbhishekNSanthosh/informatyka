@@ -20,9 +20,9 @@ export default function FooterView() {
           <div className="absolute right-[2vw] dark:bg-breakerDay-600 bg-white p-4 cursor-pointer rounded-full" onClick={scrollToTop}>
             <IconScrollToTop />
           </div>
-          <div className="lg:flex lg:items-end lg:justify-between">
+          <div className="lg:flex lg:items-end lg:justify-between ">
             <div>
-              <div className="flex justify-center text-white lg:justify-start">
+              <div className="flex justify-start ml-4 lg:ml-0 md:ml-0 text-white lg:justify-start">
                 <Image
                   src={"/csks.png"}
                   width={250}
@@ -56,7 +56,7 @@ export default function FooterView() {
           </div>
         </div>
         <div className="h-[.5px] w-[92vw] bg-white dark:bg-gray-400"></div>
-        <div className="flex items-center justify-between w-full py-[2rem] px-[2vw]">
+        <div className="flex lg:flex-row md:flex-row flex-col items-center justify-between w-full py-[1rem] md:[2rem] lg:[2rem] px-[2vw]">
           <div className="">
             <span className="mt-12 text-center text-sm text-white dark:text-gray-400 lg:text-right">
               Copyright &copy; 2024. All rights reserved.

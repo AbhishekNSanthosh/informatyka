@@ -3,13 +3,24 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 export default function SkeletonLoader() {
   return (
-    <div className="flex flex-col md:flex-row gap-0 relative z-0">
-      <div className="md:w-1/3">
-        <Skeleton width={400} height={370} className="z-0" />
-        <Skeleton width={400} height={40} className="z-0" />
+    <div className="flex relative z-0 gap-8 flex-col lg:flex-row md:flex-row">
+      <div className="flex w-full md:w-[30vw] lg:w-[30vw]">
+        <div className="animate-pulse w-full">
+          <div className="h-[47vh] bg-gray-300 dark:bg-gray-800 rounded-md"></div>
+          <div className="space-y-4 mt-4">
+            <div className="h-4 bg-gray-300 dark:bg-gray-800 rounded"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-800  rounded w-3/4"></div>
+          </div>
+        </div>
       </div>
       <div className="flex-1">
-        <Skeleton height={38} width={"100%"} count={9} className="mt-2" />
+        <div className="animate-pulse w-full">
+          <div className="h-[47vh] bg-gray-300 dark:bg-gray-800 rounded-md"></div>
+          <div className="space-y-4 mt-4">
+            <div className="h-4 bg-gray-300 dark:bg-gray-800 rounded"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-800  rounded w-3/4"></div>
+          </div>
+        </div>
       </div>
     </div>
   );

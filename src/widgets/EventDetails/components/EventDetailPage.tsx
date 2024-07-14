@@ -28,12 +28,11 @@ interface EventDetailProps {
 export default function EventDetailPage(props: EventDetailProps) {
   const { event } = props;
   const isRegistrationOpen = props?.isRegistrationOpen; // Example condition for registration being open
-console.log(isRegistrationOpen)
   return (
     <div className="flex w-full">
       {event ? (
-        <div className="flex flex-row gap-8 w-full">
-          <div className="flex w-[40vw] flex-col items-center justify-center gap-4">
+        <div className="flex flex-col gap-8 w-full lg:flex-row md:flex-row">
+          <div className="flex w-full md:w-[40vw] lg:w-[40vw] flex-col items-center justify-center gap-4 dark:text-gray-400">
             <Image
               src={event.imgUrl}
               height={400}
@@ -43,7 +42,7 @@ console.log(isRegistrationOpen)
             />
             {isRegistrationOpen && event.registrationLink && (
               <Link href={event.registrationLink} className="w-full" target="_blank">
-                <button className="w-full p-3 items-center justify-center bg-breakerDay-600 text-white flex rounded-[8px] outline-none border-none">
+                <button className="w-full p-3 items-center justify-center dark:text-gray-400 bg-breakerDay-600 text-white flex rounded-[8px] outline-none border-none">
                   Register
                 </button>
               </Link>
@@ -51,45 +50,45 @@ console.log(isRegistrationOpen)
           </div>
           <div className="flex flex-col gap-4">
             <div className="w-full">
-              <span className="font-semibold text-xl text-justify">
+              <span className="font-semibold text-xl text-justify dark:text-gray-400">
                 <i>"{event.title}"</i>
               </span>
             </div>
             {event.description && (
               <div className="w-full">
-                <span className="font-normal">{event.description}</span>
+                <span className="font-normal dark:text-gray-400">{event.description}</span>
               </div>
             )}
             {event.message && (
               <div className="w-full">
-                <span className="font-normal">{event.message}</span>
+                <span className="font-normal dark:text-gray-400">{event.message}</span>
               </div>
             )}
             {event.condition && (
               <div className="w-full">
-                <span className="font-normal">{event.condition}</span>
+                <span className="font-normal dark:text-gray-400">{event.condition}</span>
               </div>
             )}
             {event.date && (
               <div className="w-full">
-                <span className="font-normal">Date: {event.date}</span>
+                <span className="font-normal dark:text-gray-400">Date: {event.date}</span>
               </div>
             )}
             {event.time && (
               <div className="w-full">
-                <span className="font-normal">Time: {event.time}</span>
+                <span className="font-normal dark:text-gray-400">Time: {event.time}</span>
               </div>
             )}
             {event.guidlinesLink && (
               <div className="w-full">
-                <Link href={event.guidlinesLink} target="_blank" className="font-semibold text-breakerDay-600">
+                <Link href={event.guidlinesLink} target="_blank" className="font-semibold dark:text-gray-400 text-breakerDay-600">
                   View guidelines
                 </Link>
               </div>
             )}
 
-            <span className="">Any queries?</span>
-            <div className="flex">
+            <span className="dark:text-gray-400">Any queries?</span>
+            <div className="flex dark:text-gray-400">
               {event.contact?.map((contactDetail, index) => (
                 <div key={index} className="w-full flex flex-col">
                   <div>

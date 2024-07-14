@@ -31,13 +31,13 @@ export default function EventItem(props: eventItemProps) {
     <Link href={`/events/${props?.event?.id}`}>
       <div onClick={()=>{
         // router?.push(`/${props?.event?.id}`)
-      }} className="w-full p-[1rem] flex-1 flex flex-col items-start justify-center bg-white shadow-md rounded-[10px] gap-4 cursor-pointer">
+      }} className="w-full dark:bg-black-100 flex-1 flex flex-col items-start justify-center bg-white shadow-md rounded-[10px] gap-4 cursor-pointer">
         <Image
           src={props?.event?.imgUrl}
-          width={430}
-          height={430}
+          width={700}
+          height={700}
           alt=""
-          className="rounded-[8px]"
+          className="rounded-[8px] h-full w-full"
         />
       </div>
     </Link>
