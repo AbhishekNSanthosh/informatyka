@@ -1,5 +1,6 @@
 import Button from "@components/Button";
 import IconArrow from "@icons/IconArrow";
+import Link from "next/link";
 import React from "react";
 
 export default function LandingPageView() {
@@ -19,9 +20,20 @@ export default function LandingPageView() {
           flood tech enthusiasts with the wisdom of tomorrow.
         </span>
         <div className="flex items-center justify-center gap-4 mt-4">
-          <Button title="Go to Events" className="border-none outline-none px-4 py-2 rounded-[7px] bg-breakerDay-600 text-white text-base"/>
-          <Button title="Learn More" icon={<IconArrow className="size-5"/>} className="border-none dark:bg-black-100 dark:text-breakerDay-600 flex items-center justify-center gap-2 outline-none px-4 py-2 rounded-lg bg-white text-breakerDay-700 text-base"/>
-        </div> 
+          <Link href="/events">
+            <Button
+              title="Go to Events"
+              className="border-none outline-none px-4 py-2 rounded-[7px] bg-breakerDay-600 text-white text-base"
+            />
+          </Link>
+          <Link href="/about">
+            <Button
+              title="Learn More"
+              icon={<IconArrow className="size-5" />}
+              className="border-none dark:bg-black-100 dark:text-breakerDay-600 flex items-center justify-center gap-2 outline-none px-4 py-2 rounded-lg bg-white text-breakerDay-700 text-base"
+            />
+          </Link>
+        </div>
       </div>
     </div>
   );

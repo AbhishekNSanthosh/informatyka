@@ -14,8 +14,8 @@ export default function FooterView() {
     });
   };
   return (
-    <section id="contact" className="p-[1rem] dark:bg-black-100">
-      <footer className="custom-footer flex flex-col items-center justify-center bg-breakerDay-600 dark:bg-black-100 px-[1vw]  rounded-[10px]">
+    <section id="contact" className="p-[0.5rem] lg:p-[1rem] md:p-[1rem] dark:bg-black-100">
+      <footer className="custom-footer flex flex-col items-center justify-center bg-breakerDay-600 dark:bg-black-100 px-[1vw]  rounded-[8px]">
         <div className="relative mx-auto w-full py-8 lg:py-16 sm:px-6 lg:px-8 lg:pt-18">
           <div className="absolute right-[2vw] dark:bg-breakerDay-600 bg-white p-2 lg:p-4 md:p-4 cursor-pointer rounded-full" onClick={scrollToTop}>
             <IconScrollToTop />
