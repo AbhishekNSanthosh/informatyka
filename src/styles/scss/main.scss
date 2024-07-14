@@ -61,3 +61,7 @@ body {
 .react-loading-skeleton::before {
   background: rgba(255, 255, 255, 0.1); /* Adjust opacity and color as needed */
 }
+
+.bgimg{
+  background:linear-gradient(to bottom, #ffffff8d, #ffffff72), url('/bg.webp') center/cover fixed no-repeat;
+}

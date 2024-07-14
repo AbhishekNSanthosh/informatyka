@@ -4,7 +4,7 @@ import React from "react";
 
 export default function LandingPageView() {
   return (
-    <div className="px-[5vw] flex w-full min-h-[90vh] items-center justify-center dark:bg-black-100">
+    <div className="px-[5vw] flex w-full min-h-[90vh] items-center justify-center dark:bg-black-100 bgimg">
       <div className="h-full flex items-center justify-center flex-col gap-2 text-center w-[100vw] lg:w-[70vw] md:w-[70vw]">
         <span className="uppercase maintitle font-medium dark:text-gray-400 text-md md:text-3xl lg:text-3xl">
           women in computing presents
