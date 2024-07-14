@@ -11,7 +11,7 @@ const DarkModeToggle = dynamic(() => import("@components/Toggle"), {
 
 export default function HeaderView() {
   return (
-    <div className="fixed w-screen flex flex-row px-[5vw] py-[2rem] backdrop-blur-md dark:bg-black-100  bg-opacity-0">
+    <div className="fixed w-screen z-50 flex flex-row px-[5vw] py-[2rem] backdrop-blur-md dark:bg-black-100  bg-opacity-0">
       <div className="flex-1">
         <div className="dark:hidden flex">
           <Logo />

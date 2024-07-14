@@ -1,17 +1,45 @@
+"use client"
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+
+interface Contact {
+  name: string;
+  no: string;
+}
 
 interface eventItemProps {
   event: {
+    id:string;
     title: string;
+    description: string;
+    message: string;
     imgUrl: string;
-    desc: string;
+    condition: string;
+    contact: Contact[];
+    mode: string;
+    date: string;
+    time: string;
+    registrationLink: string;
+    guidlinesLink: string;
   };
 }
 export default function EventItem(props: eventItemProps) {
+  const router = useRouter()
   return (
-    <div className="w-full p-1">
-      <Image src={props?.event?.imgUrl} width={400} height={400} alt="" />
-    </div>
+    <Link href={`/events/${props?.event?.id}`}>
+      <div onClick={()=>{
+        // router?.push(`/${props?.event?.id}`)
+      }} className="w-full p-[1rem] flex-1 flex flex-col items-start justify-center bg-white shadow-md rounded-[10px] gap-4 cursor-pointer">
+        <Image
+          src={props?.event?.imgUrl}
+          width={430}
+          height={430}
+          alt=""
+          className="rounded-[8px]"
+        />
+      </div>
+    </Link>
   );
 }
