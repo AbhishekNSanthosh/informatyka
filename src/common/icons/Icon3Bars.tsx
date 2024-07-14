@@ -1,7 +1,5 @@
-
-
 import React from "react";
-import { IconProps } from "../libs/types";
+import { IconProps } from  "@lib/types";
 
 export default function Icon3Bars(props: IconProps) {
   return (

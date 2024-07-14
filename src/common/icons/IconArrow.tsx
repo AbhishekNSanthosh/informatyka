@@ -1,7 +1,7 @@
-import { IconProps } from "@libs/types";
 import React from "react";
+import { IconProps } from "@libs/types";
 
-export default function IconClose(props: IconProps) {
+export default function IconArrow(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,7 @@ export default function IconClose(props: IconProps) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 18 18 6M6 6l12 12"
+        d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
       />
     </svg>
   );
