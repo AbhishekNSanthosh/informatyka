@@ -29,9 +29,9 @@ jobs:
       - name: Deploy via FTP
         run: |
           lftp -c "
-            set ftp:ssl-allow no;  # Disable SSL for FTP (adjust as needed)
+            set ftp:ssl-allow no;
             open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }};
-            set ssl:verify-certificate no;  # Ignore certificate verification (adjust as needed)
+            set ssl:verify-certificate no;
             mirror -R -e -x .git/ -x .github/ -x .next/ -x node_modules/ ./ /public_html/;
             bye
           "
