@@ -10,44 +10,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.17.0'  # Updated Node.js version
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.17.0'  # Updated Node.js version
 
-    - name: Install dependencies
-      run: npm install  # Adjust if using yarn or other package managers
+      - name: Install dependencies
+        run: npm install  # Adjust if using yarn or other package managers
 
-    - name: Build project
-      run: npm run build  # Adjust according to your build command
+      - name: Build project
+        run: npm run build  # Adjust according to your build command
 
-    - name: Install lftp
-      run: sudo apt-get install lftp -y
+      - name: Install lftp
+        run: sudo apt-get install lftp -y
+        
+      - name: Test DNS Resolution
+        run: |
+          nslookup ${{ secrets.FTP_SERVER }}
+          dig ${{ secrets.FTP_SERVER }}
 
-    - name: Check FTP Server Address
-      run: echo "FTP Server Address: ${{ secrets.FTP_SERVER }}"
+      - name: Verify FTP Connection
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
+        run: |
+          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; ls; bye"
 
-    - name: Test DNS Resolution
-      run: |
-        nslookup ${{ secrets.FTP_SERVER }}
-        dig ${{ secrets.FTP_SERVER }}
-
-    - name: Verify FTP Connection
-      env:
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
-      run: |
-        lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; ls; bye"
-
-    - name: Deploy to cPanel
-      if: success()  # Only run if the previous step was successful
-      env:
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
-      run: |
-        lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -R ./build /public_html; bye"
+      - name: Deploy to cPanel
+        if: success()  # Only run if the previous step was successful
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
+        run: |
+          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -R ./build /public_html; bye"
