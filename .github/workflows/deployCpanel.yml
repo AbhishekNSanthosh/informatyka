@@ -32,4 +32,9 @@ jobs:
         FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
-
+      run: |
+        lftp -c "
+        open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
+        mirror -R ./build /public_html;
+        bye
+        "
