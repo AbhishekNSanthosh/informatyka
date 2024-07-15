@@ -41,12 +41,7 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
       run: |
-        lftp -c "
-          set ftp:ssl-allow no;
-          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
-          ls;
-          bye
-        "
+        lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; ls; bye"
 
     - name: Deploy to cPanel
       if: success()  # Only run if the previous step was successful
@@ -55,9 +50,4 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
       run: |
-        lftp -c "
-          set ftp:ssl-allow no;
-          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
-          mirror -R .next /public_html;
-          bye
-        "
+        lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -R ./build /public_html; bye"
