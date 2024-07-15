@@ -20,11 +20,8 @@ jobs:
 
       - name: Install dependencies and build Next.js app
         run: |
-          yarn install  # Install project dependencies
-          touch .env.local
-          echo MONGO_URL=${{ secrets.MONGO_URL }} >> .env.local
-          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env.local
-          yarn build  # Build Next.js app
+          npm install  # Install project dependencies
+          npm build  # Build Next.js app
 
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -33,6 +30,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./  # This points to the build output directory of your Next.js app
-          server-dir: /
-          protocol: ftps
-          timeout: 300000  # Set a longer timeout value in milliseconds (here, 2 minutes)
+          server-dir: /  # Adjust the server directory as needed
+          protocol: ftps  # Use 'ftps' for FTPS protocol
+          timeout: 300000  # Set a longer timeout value in milliseconds (here, 5 minutes)
