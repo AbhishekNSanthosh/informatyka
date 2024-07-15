@@ -27,7 +27,23 @@ jobs:
     - name: Install lftp
       run: sudo apt-get install lftp -y
 
+    - name: Print FTP Server Address
+      run: echo ${{ secrets.FTP_SERVER }}
+
+    - name: Verify FTP Connection
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
+      run: |
+        lftp -e "
+          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
+          ls;
+          bye
+        "
+
     - name: Deploy to cPanel
+      if: success()  # Only run if the previous step was successful
       env:
         FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
