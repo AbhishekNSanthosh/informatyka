@@ -30,13 +30,23 @@ jobs:
     - name: Print FTP Server Address
       run: echo ${{ secrets.FTP_SERVER }}
 
+    - name: Check DNS Resolution
+      run: |
+        nslookup ${{ secrets.FTP_SERVER }}
+        dig ${{ secrets.FTP_SERVER }}
+
     - name: Verify FTP Connection
       env:
         FTP_SERVER: ${{ secrets.FTP_SERVER }}       # FTP server address
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
       run: |
-        lftp -c "open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; ls; bye"
+        lftp -c "
+          set ftp:ssl-allow no;
+          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
+          ls;
+          bye
+        "
 
     - name: Deploy to cPanel
       if: success()  # Only run if the previous step was successful
@@ -45,4 +55,9 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}   # FTP username
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}   # FTP password
       run: |
-        lftp -c "open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -R .next /public_html; bye"
+        lftp -c "
+          set ftp:ssl-allow no;
+          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
+          mirror -R .next /public_html;
+          bye
+        "
