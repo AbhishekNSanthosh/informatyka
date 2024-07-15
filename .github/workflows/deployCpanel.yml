@@ -27,10 +27,10 @@ jobs:
     - name: Install lftp
       run: sudo apt-get install lftp -y
 
-    - name: Print FTP Server Address
-      run: echo ${{ secrets.FTP_SERVER }}
+    - name: Check FTP Server Address
+      run: echo "FTP Server Address: ${{ secrets.FTP_SERVER }}"
 
-    - name: Check DNS Resolution
+    - name: Test DNS Resolution
       run: |
         nslookup ${{ secrets.FTP_SERVER }}
         dig ${{ secrets.FTP_SERVER }}
