@@ -14,7 +14,7 @@ export default function LandingPageView() {
           INFORMATYKA 4.0
         </span>
         <span className="text-center mt-4 dark:text-gray-400">
-          Streaming a series of tech talks on leading-edge topics, brought up by
+          Streaming a series of events on leading-edge topics, brought up by
           IEEE Computer Society Kerala Chapter Women in Computing. Hold on,
           because we aren't just up with an event, but an experience designed to
           flood tech enthusiasts with the wisdom of tomorrow.
