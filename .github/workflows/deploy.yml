@@ -3,7 +3,7 @@ name: Deploy to FTP
 on:
   push:
     branches:
-      - main  # Adjust the branch name if needed
+      - main # Adjust the branch name if needed
 
 jobs:
   deploy:
@@ -16,12 +16,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 18.17.0  # Use the desired Node.js version
+          node-version: 18.17.0 # Use the desired Node.js version
 
       - name: Install dependencies and build Next.js app
         run: |
-          npm install  # Install project dependencies
-          npm build  # Build Next.js app
+          yarn install  # Install project dependencies
+          yarn build  # Build Next.js app
 
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -29,7 +29,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./  # This points to the build output directory of your Next.js app
-          server-dir: /  # Adjust the server directory as needed
-          protocol: ftps  # Use 'ftps' for FTPS protocol
-          timeout: 300000  # Set a longer timeout value in milliseconds (here, 5 minutes)
+          local-dir: ./ # This points to the build output directory of your Next.js app
+          server-dir: / # Adjust the server directory as needed
+          protocol: ftps # Use 'ftps' for FTPS protocol
+          timeout: 300000 # Set a longer timeout value in milliseconds (here, 5 minutes)
