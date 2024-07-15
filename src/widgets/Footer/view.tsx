@@ -65,7 +65,7 @@ export default function FooterView() {
           </div>
           <div className="">
             <span className="mt-12 text-center text-sm text-white dark:text-gray-400 lg:text-right">
-              Crafted by{" "}
+              Crafted with ❤️ by{" "}
               <span className="font-semibold text-breakerDay-950 dark:text-breakerDay-600">
                 IEEE CSKS
               </span>

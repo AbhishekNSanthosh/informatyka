@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,20 +22,43 @@
         "name": "next"
       }
     ],
-
     "paths": {
-      "@app/*": ["./src/app/*"],
-      "@api/*": ["./src/api/*"],
-      "@widgets/*": ["./src/widgets/*"],
-      "@libs/*": ["./src/common/libs/*"],
-      "@font/*": ["./src/common/font/*"],
-      "@core/*": ["./src/common/core/*"],
-      "@utils/*": ["./src/common/utils/*"],
-      "@icons/*": ["./src/common/icons/*"],
-      "@themes/*": ["./src/common/themes/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@images/*": ["./src/images/*"],
-      "@components/*": ["./src/common/components/*"]
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@widgets/*": [
+        "./src/widgets/*"
+      ],
+      "@libs/*": [
+        "./src/common/libs/*"
+      ],
+      "@font/*": [
+        "./src/common/font/*"
+      ],
+      "@core/*": [
+        "./src/common/core/*"
+      ],
+      "@utils/*": [
+        "./src/common/utils/*"
+      ],
+      "@icons/*": [
+        "./src/common/icons/*"
+      ],
+      "@themes/*": [
+        "./src/common/themes/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@images/*": [
+        "./src/images/*"
+      ],
+      "@components/*": [
+        "./src/common/components/*"
+      ]
     }
   },
   "include": [
@@ -39,7 +66,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/**/*"
+    "src/**/*",
+    "_next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
