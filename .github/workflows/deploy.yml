@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: 18.17.0  # Use the desired Node.js version
 
+      - name: Install lftp
+        run: sudo apt-get install lftp -y
+
       - name: Install dependencies and build Next.js app
         run: |
           yarn install  # Install project dependencies
