@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST='{"widgets\\\\Header\\\\view.tsx -> @components/Toggle":{"id":8649,"files":["static/chunks/9c4e2130.b11fa05cb6f69cb9.js","static/chunks/649.c131857f48277755.js"]}}';

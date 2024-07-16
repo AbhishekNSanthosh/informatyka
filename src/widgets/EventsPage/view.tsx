@@ -10,6 +10,7 @@ interface Event {
   title: string;
   description: string;
   imgUrl: string;
+  date:string
 }
 
 export default function EventsPageView() {
@@ -21,18 +22,31 @@ export default function EventsPageView() {
       const eventsCollectionRef = collection(db, "events");
       try {
         const querySnapshot = await getDocs(eventsCollectionRef);
+        // Map Firestore documents to Event type
         const eventData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         })) as Event[];
-
+  
+        // Sort events by date in descending order
+        eventData.sort((a, b) => {
+          // Convert date strings to Date objects for comparison
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          // Sort descending (latest date first)
+          return dateB.getTime() - dateA.getTime();
+        });
+  
         setEvents(eventData);
         setIsLoading(false); // Set loading to false after data is fetched
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
     };
-
+  
     fetchEvents();
   }, []);
+  
 
   return (
     <div className="px-[5vw] py-[2rem] dark:bg-black-100">
