@@ -1,37 +1,8 @@
 ---
 deployment:
   tasks:
-    - export NODE_VERSION=16
-    - export NPM_VERSION=8
-
-    # Step 1: Install Node.js and npm
-    - echo "Installing Node.js and npm..."
-    - source /opt/cpanel/ea-nodejs$NODE_VERSION/bin/enable
-    - nvm use $NODE_VERSION
-    - nvm install $NODE_VERSION
-    - nvm use $NODE_VERSION
-    - npm install -g npm@$NPM_VERSION
-
-    # Step 2: Set deployment source and target directories
-    - export DEPLOYMENT_SOURCE=$PWD
-    - export DEPLOYMENT_TARGET=$HOME/nextjs_app
-
-    # Step 3: Install dependencies
-    - echo "Installing dependencies..."
-    - npm install --prefix $DEPLOYMENT_SOURCE
-
-    # Step 4: Build the Next.js application
-    - echo "Building the application..."
-    - npm run build --prefix $DEPLOYMENT_SOURCE
-
-    # Step 5: Ensure target directory exists
-    - if [ ! -d "$DEPLOYMENT_TARGET" ]; then mkdir -p $DEPLOYMENT_TARGET; fi
-
-    # Step 6: Sync files to target directory
-    - rsync -a $DEPLOYMENT_SOURCE/ $DEPLOYMENT_TARGET/
-
-    # Step 7: Start the application using PM2
-    - echo "Starting the application with PM2..."
-    - pm2 start $DEPLOYMENT_TARGET/node_modules/.bin/next --name "nextjs_app" -- start -p 3000
-    - pm2 save
-    - pm2 startup
+    - export DEPLOYPATH=/home/$USER/public_html/
+    - npm install
+    - npm run build
+    - npm run export
+    - /bin/cp -R out/* $DEPLOYPATH
