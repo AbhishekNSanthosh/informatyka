@@ -7,7 +7,7 @@ import FooterView from "@widgets/Footer";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "Informatyka",
+  title: "Informatyka 4.0",
   description:
     "Informatyka, presented by the IEEE Computer Society Kerala Chapter Women in Computing, is a dynamic series of events on cutting-edge topics. Led by pioneering individuals in the industry, these sessions are designed to inspire and motivate everyone, from aspiring tech enthusiasts to seasoned professionals. Each event explores the latest advancements and trends in technology, offering valuable insights and fostering a vibrant sense of community and empowerment.",
 };
